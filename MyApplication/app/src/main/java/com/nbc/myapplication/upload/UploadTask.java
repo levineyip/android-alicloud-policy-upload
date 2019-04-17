@@ -1,11 +1,10 @@
-package com.nbc.smartcar.phonecenter.upload;
+package com.nbc.myapplication.upload;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.nbc.smartcar.phonecenter.BrowserConstants;
+import com.nbc.myapplication.util.PreferenceUtil;
 import com.nbc.smartcar.phonecenter.bean.AliCloudOSS;
-import com.nbc.smartcar.phonecenter.utils.PreferenceUtil;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -32,7 +31,7 @@ public class UploadTask implements ITask {
 
     @Override
     public void run() {
-        Log.d("yewei", "filePath  -->  " + filePath);
+        Log.d("UploadTask", "filePath  -->  " + filePath);
         if (!TextUtils.isEmpty(filePath)) {
             formUpload(filePath);
         }
@@ -64,7 +63,7 @@ public class UploadTask implements ITask {
             // Signature
             parameters.put("Signature", ossPolicy.getSignature());
 
-            URL url = new URL(BrowserConstants.REQUEST_HTTPS_ALI_CLOUD_OSS + ossPolicy.getHost());
+            URL url = new URL(ossPolicy.getHost());
             conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(10000);
             conn.setReadTimeout(10000);
@@ -127,10 +126,10 @@ public class UploadTask implements ITask {
             out.flush();
             out.close();
 
-            Log.d("yewei", localFile + "  -->  " + conn.getResponseCode());
+            Log.d("UploadTask", localFile + "  -->  " + conn.getResponseCode());
             if (conn.getResponseCode() == 200) {
                 if (callback != null) {
-                    String imageUrl = BrowserConstants.REQUEST_HTTPS_ALI_CLOUD_OSS + ossPolicy.getHost() + File.separator + ossPolicy.getDir() + fileName;
+                    String imageUrl = ossPolicy.getHost() + File.separator + ossPolicy.getDir() + fileName;
                     callback.uploadSingleImageCompleted(position, imageUrl);
                     return;
                 }
