@@ -1,5 +1,3 @@
-# levineye.github.io
-
 阿里云上传图片的两种方式：  
 1.STS鉴权模式 - 使用阿里云封装的SDK调用，安全简单(https://www.jianshu.com/p/dcc13b4ef905)。  
 2.Policy鉴权模式 - 自己实现模拟表单提交Policy的方式上传文件到阿里云，相对1来说会麻烦一些。  
