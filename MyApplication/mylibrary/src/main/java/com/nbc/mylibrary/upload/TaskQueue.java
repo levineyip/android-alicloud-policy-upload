@@ -1,4 +1,4 @@
-package com.nbc.myapplication.upload;
+package com.nbc.mylibrary.upload;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

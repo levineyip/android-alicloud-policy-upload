@@ -1,10 +1,11 @@
-package com.nbc.myapplication.upload;
+package com.nbc.mylibrary.upload;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.nbc.myapplication.util.PreferenceUtil;
-import com.nbc.smartcar.phonecenter.bean.AliCloudOSS;
+import com.nbc.mylibrary.entity.AliCloudOSS;
+import com.nbc.mylibrary.util.PreferenceUtil;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -20,10 +21,12 @@ import java.util.Map;
 public class UploadTask implements ITask {
 
     private String filePath;
+    private Context context;
     private int position;
     private OnUploadCallback callback;
 
-    public UploadTask(int position, String filePath, OnUploadCallback callback) {
+    public UploadTask(Context context, int position, String filePath, OnUploadCallback callback) {
+        this.context = context;
         this.position = position;
         this.filePath = filePath;
         this.callback = callback;
@@ -41,7 +44,7 @@ public class UploadTask implements ITask {
         HttpURLConnection conn = null;
         String boundary = "9431149156168";
         try {
-            AliCloudOSS.OSSPolicy ossPolicy = PreferenceUtil.getAliCloudOSSPolicy();
+            AliCloudOSS.OSSPolicy ossPolicy = PreferenceUtil.getAliCloudOSSPolicy(context);
             if (ossPolicy == null) {
                 if (callback != null) {
                     callback.uploadSingleImageCompleted(position, null);

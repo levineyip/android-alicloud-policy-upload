@@ -1,4 +1,4 @@
-package com.nbc.myapplication.upload;
+package com.nbc.mylibrary.upload;
 
 public interface ITask {
 

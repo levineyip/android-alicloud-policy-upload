@@ -1,4 +1,4 @@
-package com.nbc.myapplication.util;
+package com.nbc.mylibrary.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;

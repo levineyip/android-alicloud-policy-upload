@@ -1,8 +1,7 @@
-package com.nbc.smartcar.phonecenter.bean;
+package com.nbc.mylibrary.entity;
 
-import com.nbc.smartcar.phonecenter.bean.community.BaseEntity;
 
-public class AliCloudOSS extends BaseEntity {
+public class AliCloudOSS {
 
     private OSSPolicy data;
 

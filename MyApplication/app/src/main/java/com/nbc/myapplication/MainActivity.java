@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.nbc.myapplication.upload.ITask;
-import com.nbc.myapplication.upload.TaskQueue;
-import com.nbc.myapplication.upload.UploadTask;
+import com.nbc.mylibrary.upload.ITask;
+import com.nbc.mylibrary.upload.TaskQueue;
+import com.nbc.mylibrary.upload.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements ITask.OnUploadCal
             public void onClick(View v) {
                 taskQueue.start();
                 for (int index = 0; index < picImagePaths.size(); index++) {
-                    taskQueue.add(new UploadTask(index, picImagePaths.get(index), MainActivity.this));
+                    taskQueue.add(new UploadTask(getBaseContext(), index, picImagePaths.get(index), MainActivity.this));
                 }
             }
         });
